@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://juristkollen.se/sitemap.xml
+
+Disallow: /admin
+Disallow: /login

@@ -1,0 +1,94 @@
+@import '@fontsource/playfair-display/400.css';
+@import '@fontsource/playfair-display/700.css';
+@import '@fontsource/inter/300.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: 238 89% 66%;
+    --secondary: 238 30% 96%;
+    --secondary-foreground: 238 15% 30%;
+    --muted: 238 20% 96%;
+    --muted-foreground: 238 10% 45%;
+    --background: 240 20% 98%;
+    --foreground: 238 15% 15%;
+    --accent: 238 89% 66%;
+  }
+
+  body {
+    @apply bg-[#f8f9fc] text-foreground antialiased font-sans tracking-tight;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary to-accent text-white px-8 py-4 rounded-full font-medium 
+           hover:shadow-xl hover:shadow-primary/20 transition-all duration-300 
+           hover:-translate-y-0.5 backdrop-blur-sm;
+  }
+  
+  .btn-secondary {
+    @apply bg-white/90 text-secondary-foreground px-8 py-4 rounded-full font-medium 
+           hover:bg-white hover:shadow-lg transition-all duration-300
+           hover:-translate-y-0.5 border border-secondary-foreground/10;
+  }
+
+  .glass-card {
+    @apply bg-white/95 backdrop-blur-xl rounded-3xl shadow-xl
+           border border-white/20 hover:border-white/30 transition-colors
+           hover:shadow-2xl hover:shadow-primary/5 p-6;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+}
+
+/* Responsive text utilities */
+@layer utilities {
+  .text-responsive {
+    @apply text-base sm:text-lg md:text-xl lg:text-2xl;
+  }
+
+  .heading-responsive {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  .subheading-responsive {
+    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;
+  }
+}
+
+/* Animations */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
