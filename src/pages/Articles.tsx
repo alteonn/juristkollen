@@ -6,13 +6,11 @@ import { ArticleSearch } from '../components/articles/ArticleSearch';
 import { ArticleList } from '../components/articles/ArticleList';
 import { ArticleFilters } from '../components/articles/ArticleFilters';
 import { useArticles } from '../hooks/useArticles';
-import { useNavigate } from 'react-router-dom';
 
 export function Articles() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const { articles, loading, error } = useArticles();
-  const navigate = useNavigate();
 
   const filteredArticles = articles.filter(article => {
     const matchesSearch = searchTerm === '' || 

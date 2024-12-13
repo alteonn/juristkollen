@@ -1,0 +1,48 @@
+.article-content {
+    h2 {
+      scroll-margin-top: 100px;
+    }
+  
+    h3 {
+      scroll-margin-top: 100px;
+    }
+  
+    a {
+      color: #646cea;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+  
+    a:hover {
+      text-decoration: underline;
+    }
+  
+    code {
+      background: rgba(100, 108, 234, 0.1);
+      padding: 0.2em 0.4em;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+  
+    pre {
+      background: rgba(100, 108, 234, 0.1);
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+  
+    img {
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+  
+    ul, ol {
+      margin-bottom: 1.5rem;
+    }
+  
+    blockquote {
+      font-style: italic;
+      color: #4b5563;
+      margin: 2rem 0;
+    }
+  }

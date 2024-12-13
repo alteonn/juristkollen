@@ -50,7 +50,7 @@ export function Articles() {
     <section className="py-24 bg-gradient-to-b from-secondary/30 to-background">
       <div className="container">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-6">Aktuella artiklar</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">Aktuella artiklar</h2>
           <p className="text-xl text-muted-foreground">
             Håll dig uppdaterad med de senaste juridiska nyheterna och expertanalyser
           </p>
@@ -60,6 +60,7 @@ export function Articles() {
           {articles.map((article) => {
             const CategoryIcon = getCategoryIcon(article.category);
             const categoryColor = getCategoryColor(article.category);
+            const readingTime = Math.ceil(article.content.split(' ').length / 200); // 200 words per minute
 
             return (
               <GlassCard 
@@ -97,6 +98,10 @@ export function Articles() {
 
                 <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                   <span>{new Date(article.published_at).toLocaleDateString('sv-SE')}</span>
+                  <div className="flex items-center gap-1">
+                    <Clock className="w-4 h-4" />
+                    <span>{readingTime} min</span>
+                  </div>
                 </div>
 
                 <h3 className="text-2xl font-semibold mb-4 leading-tight">

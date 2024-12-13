@@ -30,15 +30,17 @@ export function ArticleList({ articles, loading }: ArticleListProps) {
   }
 
   return (
-    <div className="grid gap-8">
+    <div className="grid gap-6">
       {articles.map((article) => {
         const CategoryIcon = getCategoryIcon(article.category);
         const categoryColor = getCategoryColor(article.category);
+        const readingTime = Math.ceil(article.content.split(' ').length / 200); // 200 words per minute
 
         return (
           <GlassCard 
             key={article.id}
-            className="flex flex-col md:flex-row gap-6"
+            className="flex flex-col md:flex-row gap-6 hover:-translate-y-1 transition-transform duration-300 cursor-pointer"
+            onClick={() => navigate(`/artiklar/${article.slug}`)}
           >
             <div className="w-full md:w-64 h-48 bg-secondary/30 rounded-xl flex-shrink-0">
               {article.image_url ? (
@@ -49,29 +51,42 @@ export function ArticleList({ articles, loading }: ArticleListProps) {
                 />
               ) : (
                 <div 
-                  className="w-full h-full flex items-center justify-center bg-[#646cea]/5"
+                  className="w-full h-full flex items-center justify-center"
+                  style={{ backgroundColor: `${categoryColor}10` }}
                 >
                   <CategoryIcon 
-                    className="w-16 h-16 text-[#646cea]"
+                    className="w-16 h-16"
+                    style={{ color: categoryColor }}
                   />
                 </div>
               )}
             </div>
 
             <div className="flex-1">
-              <div className="flex items-center gap-4 mb-4">
+              <div className="flex flex-wrap items-center gap-3 mb-4">
                 <span 
-                  className="px-3 py-1 rounded-full text-sm font-medium bg-[#646cea]/10 text-[#646cea]"
+                  className="px-3 py-1 rounded-full text-sm font-medium"
+                  style={{ 
+                    backgroundColor: `${categoryColor}20`,
+                    color: categoryColor
+                  }}
                 >
                   {article.category}
                 </span>
                 <div className="flex items-center gap-1 text-sm text-muted-foreground">
                   <Clock className="w-4 h-4" />
-                  <span>{article.readTime}</span>
+                  <span>{readingTime} min läsning</span>
                 </div>
+                <span className="text-sm text-muted-foreground">
+                  {new Date(article.published_at).toLocaleDateString('sv-SE', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  })}
+                </span>
               </div>
 
-              <h2 className="text-2xl font-semibold mb-4">
+              <h2 className="text-2xl font-semibold mb-4 leading-tight">
                 {article.title}
               </h2>
 
@@ -80,8 +95,8 @@ export function ArticleList({ articles, loading }: ArticleListProps) {
               </p>
 
               <Button 
-                variant="secondary"
-                onClick={() => navigate(`/artiklar/${article.slug}`)}
+                variant="secondary" 
+                className="group"
               >
                 Läs artikel
               </Button>
