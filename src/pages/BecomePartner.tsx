@@ -123,7 +123,7 @@ export function BecomePartner() {
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl" />
                   <img
-                    src="https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?auto=format&fit=crop&q=80"
+                    src="https://res.cloudinary.com/acasting-prod/image/upload/v1734134343/blog-articles/iin1vlkzdvmb0apnsjyq.jpg"
                     alt="Partner benefits"
                     className="relative rounded-2xl w-full h-full object-cover"
                   />
